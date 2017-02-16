@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cocktail.name %>
+</p>
+<p>
+  <strong>Ingredients:</strong>
+  <ul>
+  <% @cocktail.doses.each do |dose| %>
+    <li><%= dose.description %> <%= dose.ingredient.name %>
+    <%= link_to edit_cocktail_dose_path(@cocktail.id,dose.id) do%>
+      <span class="glyphicon glyphicon-pencil"></span>
+    <% end %>
+
+  <% end %>
+  </ul>
+</p>
+
+<%= render '/doses/form', dose: @dose %>
+
+<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
+<%= link_to 'Back', cocktails_path %> |
+<%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail) %>
