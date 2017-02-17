@@ -4,7 +4,15 @@ class CocktailsController < ApplicationController
   # GET /cocktails
   # GET /cocktails.json
   def index
-    @cocktails = Cocktail.all
+    if params[:q] && !params[:q].blank?
+      @cocktails = Cocktail.all.where('lower(name) = ?', params[:q].downcase)
+    elsif params[:q]
+      @cocktails = Cocktail.all
+      @banner = false
+    else
+      @cocktails = Cocktail.all
+      @banner = true
+    end
   end
 
   # GET /cocktails/1
@@ -70,6 +78,6 @@ class CocktailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cocktail_params
-      params.require(:cocktail).permit(:name)
+      params.require(:cocktail).permit(:name, :photo)
     end
 end

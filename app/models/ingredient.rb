@@ -3,13 +3,13 @@ class Ingredient < ApplicationRecord
   has_many :cocktails, through: :doses
   has_many :doses
 
-  INGREDIENTS = []
-  Ingredient.all.each do |ingredient|
-    a = []
-    a << ingredient.name
-    a << ingredient.id
-    INGREDIENTS << a
-  end
+  # INGREDIENTS = []
+  # Ingredient.all.each do |ingredient|
+  #   a = []
+  #   a << ingredient.name
+  #   a << ingredient.id
+  #   INGREDIENTS << a
+  # end
 
 
 end

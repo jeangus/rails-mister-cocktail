@@ -1,13 +1,21 @@
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :description %>
-    <%= f.input :ingredient_id, collection: Ingredient::INGREDIENTS %>
-    <%= f.input :cocktail_id, :as => :hidden, :input_html => { :value => @cocktail.id } %>
-  </div>
+<div id="dose_form">
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-inputs">
+      <%= f.input :description %>
+      <%= f.input :ingredient_id, collection: Ingredient.all %>
+      <%= f.input :cocktail_id, :as => :hidden, :input_html => { :value => @cocktail.id } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $("#clickme").click(function(){
+    $("#new_dose").show();
+});</script>

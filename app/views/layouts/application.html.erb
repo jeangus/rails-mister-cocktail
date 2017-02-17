@@ -12,12 +12,13 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <% if @banner %>
+      <%= render '/layouts/banner' %>
+    <% end %>
+    <%= render '/layouts/navbar' %>
+
           <%= yield %>
-        </div>
-      </div>
-    </div>
+  <hr>
   </body>
+  <%= cloudinary_js_config %>
 </html>
